@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars API</title>
+    <style>
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th {
+            background-color: lightseagreen;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Star Wars API</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Names</th>
+            </tr>
+        </thead>
+        <!-- Define an ID attribute to be able to change it with javascript -->
+        <tbody id="tdata">
+            
+        </tbody>
+    </table>
+
+    <script>
+        /* Get characters from controller in string format, and divided by comma 
+         * This approach only works in a <script> tag.
+         */
+        const characters = "{{ characters }}";
+        // Split the string in every comma separator
+        let names = characters.split(',');
+        // Get html table reference
+        let table = document.getElementById('tdata');
+
+        // It'll loop through each name from the Star Wars API
+        names.forEach((name) => {
+
+            /* Each loop new elements are created to fullfil the table.
+             * The first element is a tr (table row), then a td (table data).
+             * The last is a text node where a character name is printed.
+             */
+            let tr = document.createElement("TR");
+            let td = document.createElement("TD");
+            let text = document.createTextNode(name);
+
+            /* Now each element is appened to the correct parent:
+             * text > td > tr > table
+             */
+            td.appendChild(text);
+            tr.appendChild(td);
+            table.appendChild(tr);
+        });
+
+    </script>
+</body>
+</html>
