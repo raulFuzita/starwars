@@ -6,9 +6,8 @@ const engines = require('consolidate'); // Simple engine to render html from vie
 const app = express();
 // Import a router
 const router = require('./routes/starWarsRoutes');
-// Let express access views folder
-app.use(express.static(path.join(__dirname, 'views')));
 // Set a basic engine to render an HTML file from views folder
+app.set('views', path.join(__dirname, 'views'));
 app.engine('html', engines.mustache);
 app.set('view engine', 'html');
 // Set morgan to dev mode
