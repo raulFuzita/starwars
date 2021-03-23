@@ -1,0 +1,3 @@
+# Once you have clone this repo, duplicate this file and rename the 
+# the copy to .env only
+SERVER_PORT=8000
