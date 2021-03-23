@@ -39,6 +39,10 @@ app.get('/', (req, res) => {
     res.redirect('/index');
 }); // root url
 
+app.use((req, res) => {
+    res.status(404).render('404');
+});
+
 // Start listening on port 8000
 app.listen(port, () => {
     console.log('Server running on port ' + port);
