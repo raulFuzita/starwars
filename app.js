@@ -19,8 +19,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', router); // root url
-app.get('/index', router); // index url
+app.use('/index', router); // index url
+
+/* If url is the root one it redirects to /index. 
+ * Example: 
+ * localhost:8000/ to localhost:8000/index
+ */
+app.get('/', (req, res) => {
+    res.redirect('/index');
+}); // root url
 
 // Start listening on port 3000
 app.listen(8000, () => {
